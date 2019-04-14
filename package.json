@@ -1,0 +1,33 @@
+{
+  "name": "nodejs-cli-sdk",
+  "version": "0.0.1",
+  "description": "Utils for building node command line interfaces",
+  "main": "index.ts",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf transpiled",
+    "test": "ts-node node_modules/jasmine/bin/jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onivoro/nodejs-cli-sdk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/onivoro/nodejs-cli-sdk/issues"
+  },
+  "homepage": "https://github.com/onivoro/nodejs-cli-sdk#readme",
+  "devDependencies": {
+    "@types/jasmine": "^3.3.12",
+    "@types/lodash": "^4.14.123",
+    "@types/node": "^11.13.4",
+    "jasmine": "^3.4.0",
+    "ts-node": "^8.0.3",
+    "typescript": "^3.4.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
