@@ -1,6 +1,6 @@
 {
   "name": "nodejs-cli-sdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Utils for building node command line interfaces",
   "main": "index.ts",
   "scripts": {
