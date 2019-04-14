@@ -7,7 +7,7 @@
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rm -rf transpiled",
-    "prepublish": "npm run build && npm version patch",
+    "prepublish": "git checkout master && git push origin master && npm run build && npm version patch",
     "test": "ts-node node_modules/jasmine/bin/jasmine"
   },
   "repository": {
