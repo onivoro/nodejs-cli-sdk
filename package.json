@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-cli-sdk",
+  "name": "@onivoro/nodejs-cli-sdk",
   "version": "0.0.2",
   "description": "Utils for building node command line interfaces",
   "main": "index.ts",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/onivoro/nodejs-cli-sdk.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "lee.e.norris@gmail.com",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/onivoro/nodejs-cli-sdk/issues"
@@ -28,6 +28,7 @@
     "typescript": "^3.4.3"
   },
   "dependencies": {
+    "esm": "^3.2.22",
     "lodash": "^4.17.11"
   }
 }
