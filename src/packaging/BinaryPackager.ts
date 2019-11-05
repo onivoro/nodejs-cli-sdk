@@ -46,6 +46,7 @@ export class BinaryPackager {
   ) {
     const rawPackageContents = (this.readFileSyncOverride || readFileSync)(this.packagePath);
     const packageContents = JSON.parse(rawPackageContents);
+    packageContents.bin = {};
 
     const cliWrapperFiles = (this.readdirSyncOverride || readdirSync)(this.srcDir)
       .map(this.toScriptObj());
