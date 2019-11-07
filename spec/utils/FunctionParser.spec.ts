@@ -4,7 +4,7 @@ describe('FunctionParser', () => {
     let subject = FunctionParser;
 
     describe('parseArguments', () => {
-        ['function <name> (', 'export function <name> (', `export const blah = function (`, ].forEach((input) => {
+        ['function <name> (', 'export function <name> (', `export const blah = function (`,].forEach((input) => {
 
             describe(`when input is "${input}"`, () => {
                 let input;

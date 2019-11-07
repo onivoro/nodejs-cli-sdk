@@ -54,7 +54,7 @@ export class BinaryPackager {
     (this.execSyncOverride || execSync)(`rm -rf ${this.binDir} && mkdir ${this.binDir}`);
 
     cliWrapperFiles
-      .forEach((script: any) => {
+      .forEach((script) => {
         console.log(`adding script to package.json "bin" section: ${script.cmdName} => ${script.scriptPath}`);
         packageContents.bin[script.cmdName] = script.transpiledPath;
         BinaryCleaner.deleteBinaryLink(script.cmdName, undefined);
@@ -65,13 +65,20 @@ export class BinaryPackager {
   }
 
   toScriptObj () {
-    return (name: string) => {
-      const transpiledSrc = this.emitTranspiledSubDir ? `${this.projectFolderName}/` : '';
-      const scriptPath = `${transpiledSrc}${this.srcDir}/${name}`;
-      const cmdName = this.cmd + '-' + name.replace('.js', '').replace('.ts', '');
-      const transpiledPath = `${this.transpiledDir}/${scriptPath}`.replace('.ts', '.js');
-      return _.assign({dir: this.srcDir, name, scriptPath, cmdName, transpiledPath});
-    };
+    return (name: string) => new ScriptObject(this.cmd, name, this.projectFolderName, this.srcDir, this.transpiledDir, this.emitTranspiledSubDir);
   }
+}
 
+class ScriptObject {
+  scriptPath: string;
+  cmdName: string;
+  transpiledPath: string;
+  dir: string;
+  constructor(private cmd: string, private name: string, private projectFolderName: string, private srcDir: string, private transpiledDir, private emitTranspiledSubDir = false) {
+    const transpiledSrc = this.emitTranspiledSubDir ? `${this.projectFolderName}/` : '';
+      this.scriptPath = `${transpiledSrc}${this.srcDir}/${name}`;
+      this.cmdName = this.cmd + '-' + name.replace('.js', '').replace('.ts', '');
+      this.transpiledPath = `${this.transpiledDir}/${this.scriptPath}`.replace('.ts', '.js');
+      this.dir = this.srcDir;
+  }
 }

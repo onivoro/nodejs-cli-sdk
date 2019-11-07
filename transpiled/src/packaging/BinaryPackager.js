@@ -1,15 +1,7 @@
 "use strict";
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 exports.__esModule = true;
 var child_process_1 = require("child_process");
 var fs_1 = require("fs");
-var _ = __importStar(require("lodash"));
 var BinaryCleaner_1 = require("./BinaryCleaner");
 var BinaryPackager = /** @class */ (function () {
     function BinaryPackager(cmd, projectFolderName, packagePath, srcDir, transpiledDir, binDir, execSyncOverride, readdirSyncOverride, writeFileSyncOverride, readFileSyncOverride) {
@@ -30,6 +22,7 @@ var BinaryPackager = /** @class */ (function () {
         this.emitTranspiledSubDir = false;
         var rawPackageContents = (this.readFileSyncOverride || fs_1.readFileSync)(this.packagePath);
         var packageContents = JSON.parse(rawPackageContents);
+        packageContents.bin = {};
         var cliWrapperFiles = (this.readdirSyncOverride || fs_1.readdirSync)(this.srcDir)
             .map(this.toScriptObj());
         (this.execSyncOverride || child_process_1.execSync)("rm -rf " + this.binDir + " && mkdir " + this.binDir);
@@ -52,14 +45,25 @@ var BinaryPackager = /** @class */ (function () {
     };
     BinaryPackager.prototype.toScriptObj = function () {
         var _this = this;
-        return function (name) {
-            var transpiledSrc = _this.emitTranspiledSubDir ? _this.projectFolderName + "/" : '';
-            var scriptPath = "" + transpiledSrc + _this.srcDir + "/" + name;
-            var cmdName = _this.cmd + '-' + name.replace('.js', '').replace('.ts', '');
-            var transpiledPath = (_this.transpiledDir + "/" + scriptPath).replace('.ts', '.js');
-            return _.assign({ dir: _this.srcDir, name: name, scriptPath: scriptPath, cmdName: cmdName, transpiledPath: transpiledPath });
-        };
+        return function (name) { return new ScriptObject(_this.cmd, name, _this.projectFolderName, _this.srcDir, _this.transpiledDir, _this.emitTranspiledSubDir); };
     };
     return BinaryPackager;
 }());
 exports.BinaryPackager = BinaryPackager;
+var ScriptObject = /** @class */ (function () {
+    function ScriptObject(cmd, name, projectFolderName, srcDir, transpiledDir, emitTranspiledSubDir) {
+        if (emitTranspiledSubDir === void 0) { emitTranspiledSubDir = false; }
+        this.cmd = cmd;
+        this.name = name;
+        this.projectFolderName = projectFolderName;
+        this.srcDir = srcDir;
+        this.transpiledDir = transpiledDir;
+        this.emitTranspiledSubDir = emitTranspiledSubDir;
+        var transpiledSrc = this.emitTranspiledSubDir ? this.projectFolderName + "/" : '';
+        this.scriptPath = "" + transpiledSrc + this.srcDir + "/" + name;
+        this.cmdName = this.cmd + '-' + name.replace('.js', '').replace('.ts', '');
+        this.transpiledPath = (this.transpiledDir + "/" + this.scriptPath).replace('.ts', '.js');
+        this.dir = this.srcDir;
+    }
+    return ScriptObject;
+}());
