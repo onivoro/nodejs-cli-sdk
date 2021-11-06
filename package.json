@@ -10,7 +10,7 @@
     "release": "git pull --rebase && npm version minor && npm run build && cp package.json transpiled && git add . && git cam 'chore: release' && cd transpiled && npm publish --access public && git push"
   },
   "bin": {
-    "onivoro-generate-cli-project": "transpiled/cli/generate-project.js"
+
   },
   "repository": {
     "type": "git",
