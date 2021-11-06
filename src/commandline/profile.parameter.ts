@@ -1,6 +1,6 @@
-const { readFileSync } = require('fs');
-const { resolve } = require('path');
-const Parameter = require('./parameter');
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+import {Parameter} from './parameter';
 const PROFILES = /\[.*\]/g;
 
 function getAwsProfiles() {
@@ -14,4 +14,4 @@ function getAwsProfiles() {
   }
 }
 
-module.exports = new Parameter('profile', getAwsProfiles());
+export const profile = new Parameter('profile', getAwsProfiles());

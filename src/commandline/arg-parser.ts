@@ -12,7 +12,7 @@ function helpRequested(args) {
   return args && args.length == 1 && args[0].replace(DOUBLE_DASH, '') === 'help';
 }
 
-function argParser(args) {
+export function argParser(args) {
   if (helpRequested(args)) {
     return null;
   }
@@ -30,8 +30,4 @@ function argParser(args) {
   return output;
 }
 
-module.exports = () => {
-  const args = process.argv.slice(2);
-  return argParser(args);
-};
 
