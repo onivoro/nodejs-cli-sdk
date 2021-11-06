@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+exports.BinaryPackager = void 0;
 var child_process_1 = require("child_process");
 var fs_1 = require("fs");
 var BinaryCleaner_1 = require("./BinaryCleaner");

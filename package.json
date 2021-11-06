@@ -7,8 +7,7 @@
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rm -rf transpiled",
-    "bump": "npm run build && git checkout master && npm version patch && git push origin master",
-    "test": "ts-node node_modules/jasmine/bin/jasmine"
+    "release": "git pull --rebase && rm -rf transpiled && npm run build && npm version minor && cp package.json transpiled && cd transpiled && npm publish --access public && git push"
   },
   "bin": {
     "onivoro-generate-cli-project": "transpiled/cli/generate-project.js"
@@ -25,14 +24,11 @@
   },
   "homepage": "https://github.com/onivoro/nodejs-cli-sdk#readme",
   "devDependencies": {
-    "@types/jasmine": "^3.3.12",
-    "@types/lodash": "^4.14.123",
-    "@types/node": "^11.13.4",
-    "jasmine": "^3.4.0",
-    "ts-node": "^8.0.3",
-    "typescript": "^3.4.3"
+    "@types/node": "latest",
+    "ts-node": "latest",
+    "typescript": "latest"
   },
   "dependencies": {
-    "lodash": "^4.17.11"
+    "rxjs": "^7.4.0"
   }
 }

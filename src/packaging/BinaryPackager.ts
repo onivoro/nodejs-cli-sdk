@@ -1,6 +1,6 @@
 import {execSync} from 'child_process';
 import {readdirSync, writeFileSync, readFileSync} from 'fs';
-import * as _ from 'lodash';
+
 import {BinaryCleaner} from './BinaryCleaner';
 
 export class BinaryPackager {

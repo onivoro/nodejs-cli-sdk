@@ -1,6 +1,5 @@
 import {execSync} from 'child_process';
 import {parse} from 'path';
-import * as _ from 'lodash';
 
 export class BinaryCleaner {
 
