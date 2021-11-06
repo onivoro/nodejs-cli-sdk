@@ -1,6 +1,6 @@
 {
   "name": "@onivoro/nodejs-cli-sdk",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Utils for building node command line interfaces",
   "main": "transpiled/src/index.js",
   "types": "transpiled/src/index.d.ts",
@@ -9,9 +9,7 @@
     "clean": "rm -rf transpiled",
     "release": "git pull --rebase && npm version minor && npm run build && cp package.json transpiled && git add . && git cam 'chore: release' && cd transpiled && npm publish --access public && git push"
   },
-  "bin": {
-
-  },
+  "bin": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/onivoro/nodejs-cli-sdk.git"
