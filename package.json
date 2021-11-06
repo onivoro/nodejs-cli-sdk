@@ -1,13 +1,13 @@
 {
   "name": "@onivoro/nodejs-cli-sdk",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Utils for building node command line interfaces",
   "main": "transpiled/src/index.js",
   "types": "transpiled/src/index.d.ts",
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rm -rf transpiled",
-    "release": "git pull --rebase && npm run build && cp package.json transpiled && git add . && git cam 'chore: release' && npm version minor && cd transpiled && npm publish --access public && git push"
+    "release": "git pull --rebase && npm run build && npm version minor && cp package.json transpiled && git add . && git cam 'chore: release' && cd transpiled && npm publish --access public && git push"
   },
   "bin": {
     "onivoro-generate-cli-project": "transpiled/cli/generate-project.js"
