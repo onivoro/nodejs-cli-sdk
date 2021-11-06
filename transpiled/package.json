@@ -1,0 +1,34 @@
+{
+  "name": "@onivoro/nodejs-cli-sdk",
+  "version": "0.4.0",
+  "description": "Utils for building node command line interfaces",
+  "main": "transpiled/src/index.js",
+  "types": "transpiled/src/index.d.ts",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf transpiled",
+    "release": "git pull --rebase && rm -rf transpiled && npm run build && npm version minor && cp package.json transpiled && cd transpiled && npm publish --access public && git push"
+  },
+  "bin": {
+    "onivoro-generate-cli-project": "transpiled/cli/generate-project.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onivoro/nodejs-cli-sdk.git"
+  },
+  "keywords": [],
+  "author": "lee.e.norris@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/onivoro/nodejs-cli-sdk/issues"
+  },
+  "homepage": "https://github.com/onivoro/nodejs-cli-sdk#readme",
+  "devDependencies": {
+    "@types/node": "latest",
+    "ts-node": "latest",
+    "typescript": "latest"
+  },
+  "dependencies": {
+    "rxjs": "^7.4.0"
+  }
+}
