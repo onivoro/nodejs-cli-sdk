@@ -5,7 +5,7 @@
     "main": "src/index.js",
     "types": "src/index.d.ts",
     "scripts": {
-        "add-scripts": "npm run build && node ./transpiled/cli/bind.js --name onx --path nodejs-cli-sdk",
+        "add-scripts": "npm run build && node ./transpiled/cli/bind.js --name onx --path nodejs-cli-sdk && cp package.json transpiled",
         "build": "npm run clean && tsc",
         "clean": "rm -rf transpiled",
         "release": "git pull --rebase && npm version minor && npm run build && cp package.json transpiled && git add . && git cam 'chore: release' && cd transpiled && npm publish --access public && git push"
