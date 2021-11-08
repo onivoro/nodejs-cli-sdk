@@ -4,12 +4,16 @@
   "description": "Utils for building node command line interfaces",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "scripts": {
+  "scripts": {    
+    "add-scripts": "npm run build && node ./transpiled/cli/bind.js",
     "build": "npm run clean && tsc",
     "clean": "rm -rf transpiled",
     "release": "git pull --rebase && npm version minor && npm run build && cp package.json transpiled && git add . && git cam 'chore: release' && cd transpiled && npm publish --access public && git push"
   },
-  "bin": {},
+  "bin": {
+    "bind": "transpiled/bind.js",
+    "init": "transpiled/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/onivoro/nodejs-cli-sdk.git"
