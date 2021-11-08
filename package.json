@@ -1,6 +1,6 @@
 {
     "name": "@onivoro/nodejs-cli-sdk",
-    "version": "0.10.0",
+    "version": "0.11.0",
     "description": "Utils for building node command line interfaces",
     "main": "src/index.js",
     "types": "src/index.d.ts",
