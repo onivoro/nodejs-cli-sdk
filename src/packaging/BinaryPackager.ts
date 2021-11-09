@@ -78,8 +78,8 @@ class ScriptObject {
     const transpiledSrc = this.emitTranspiledSubDir ? `${this.projectFolderName}/` : '';
       this.scriptPath = `${transpiledSrc}${this.srcDir}/${name}`;
       this.cmdName = this.cmd + '-' + name.replace('.js', '').replace('.ts', '');
-      // this.transpiledPath = `${this.transpiledDir}/${this.scriptPath}`.replace('.ts', '.js');      
-      this.transpiledPath = `${this.scriptPath}`.replace('.ts', '.js');      
+      this.transpiledPath = `${this.transpiledDir}/${this.scriptPath}`.replace('.ts', '.js');      
+      // this.transpiledPath = `${this.scriptPath}`.replace('.ts', '.js');      
       this.dir = this.srcDir;
   }
 }
