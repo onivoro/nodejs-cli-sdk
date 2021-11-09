@@ -7,7 +7,7 @@ var __createBinding = (this && this.__createBinding) || (Object.create ? (functi
     o[k2] = m[k];
 }));
 exports.__esModule = true;
-exports.streamFile = exports.save = exports.saveObjectToDisk = exports.resolveOutputDirectory = exports.mapCsvToObject = exports.logError = exports.regionParameter = exports.profileParameter = exports.Parameter = exports.getAwsProfiles = exports.argParser = exports.FunctionParser = exports.getDirs = exports.getDirsAtPath = exports.BinaryPackager = exports.BinaryCleaner = void 0;
+exports.streamFile = exports.save = exports.saveObjectToDisk = exports.resolveOutputDirectory = exports.mapCsvToObject = exports.logError = exports.regionParameter = exports.profileParameter = exports.Parameter = exports.getAwsProfiles = exports.execIf = exports.argParser = exports.FunctionParser = exports.getDirs = exports.getDirsAtPath = exports.BinaryPackager = exports.BinaryCleaner = void 0;
 var BinaryCleaner_1 = require("./packaging/BinaryCleaner");
 __createBinding(exports, BinaryCleaner_1, "BinaryCleaner");
 var BinaryPackager_1 = require("./packaging/BinaryPackager");
@@ -19,6 +19,8 @@ var FunctionParser_1 = require("./utils/FunctionParser");
 __createBinding(exports, FunctionParser_1, "FunctionParser");
 var arg_parser_1 = require("./commandline/arg-parser");
 __createBinding(exports, arg_parser_1, "argParser");
+var exec_if_1 = require("./commandline/exec-if");
+__createBinding(exports, exec_if_1, "execIf");
 var get_aws_profiles_1 = require("./commandline/get-aws-profiles");
 __createBinding(exports, get_aws_profiles_1, "getAwsProfiles");
 var parameter_1 = require("./commandline/parameter");

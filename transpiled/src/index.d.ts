@@ -3,6 +3,7 @@ export { BinaryPackager } from './packaging/BinaryPackager';
 export { getDirsAtPath, default as getDirs } from './disk-io/list-directories';
 export { FunctionParser } from './utils/FunctionParser';
 export { argParser } from './commandline/arg-parser';
+export { execIf } from './commandline/exec-if';
 export { getAwsProfiles } from './commandline/get-aws-profiles';
 export { Parameter } from './commandline/parameter';
 export { profileParameter } from './commandline/profile.parameter';
