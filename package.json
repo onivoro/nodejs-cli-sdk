@@ -11,8 +11,8 @@
         "release": "npm version minor && npm run build && git add . && git cam 'chore: release' && npm publish --access public && git push"
     },
     "bin": {
-        "onx-bind": "cli/bind.js",
-        "onx-init": "cli/init.js"
+        "onx-bind": "transpiled/cli/bind.js",
+        "onx-init": "transpiled/cli/init.js"
     },
     "repository": {
         "type": "git",
