@@ -9,7 +9,7 @@
         "add-scripts": "npm run build && node ./transpiled/cli/bind.js --name onx",
         "build": "npm run clean && tsc",
         "clean": "rm -rf transpiled",
-        "release": "npm version minor && npm run add-scripts && git add . && git cam 'chore: release' && npm publish --access public && git push"
+        "release": "npm version minor && npm link && git add . && git cam 'chore: release' && npm publish --access public && git push"
     },
     "bin": {
         "onx-bind": "transpiled/cli/bind.js",
