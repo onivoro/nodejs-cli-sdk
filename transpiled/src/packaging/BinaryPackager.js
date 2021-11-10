@@ -46,25 +46,22 @@ var BinaryPackager = /** @class */ (function () {
     };
     BinaryPackager.prototype.toScriptObj = function () {
         var _this = this;
-        return function (name) { return new ScriptObject(_this.cmd, name, _this.projectFolderName, _this.srcDir, _this.transpiledDir, _this.emitTranspiledSubDir); };
+        return function (name) { return new ScriptObject(_this.cmd, name, _this.projectFolderName, _this.srcDir, _this.transpiledDir); };
     };
     return BinaryPackager;
 }());
 exports.BinaryPackager = BinaryPackager;
 var ScriptObject = /** @class */ (function () {
-    function ScriptObject(cmd, name, projectFolderName, srcDir, transpiledDir, emitTranspiledSubDir) {
-        if (emitTranspiledSubDir === void 0) { emitTranspiledSubDir = false; }
+    function ScriptObject(cmd, name, projectFolderName, srcDir, transpiledDir) {
         this.cmd = cmd;
         this.name = name;
         this.projectFolderName = projectFolderName;
         this.srcDir = srcDir;
         this.transpiledDir = transpiledDir;
-        this.emitTranspiledSubDir = emitTranspiledSubDir;
-        var transpiledSrc = this.emitTranspiledSubDir ? this.projectFolderName + "/" : '';
+        var transpiledSrc = this.projectFolderName || '';
         this.scriptPath = "" + transpiledSrc + this.srcDir + "/" + name;
         this.cmdName = this.cmd + '-' + name.replace('.js', '').replace('.ts', '');
         this.transpiledPath = (this.transpiledDir + "/" + this.scriptPath).replace('.ts', '.js');
-        // this.transpiledPath = `${this.scriptPath}`.replace('.ts', '.js');      
         this.dir = this.srcDir;
     }
     return ScriptObject;

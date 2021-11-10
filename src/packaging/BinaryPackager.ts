@@ -14,7 +14,7 @@ export class BinaryPackager {
     return new BinaryPackager(cmd, projectFolderName, undefined, undefined, undefined, undefined, execSyncOverride, readdirSyncOverride, writeFileSyncOverride, readFileSyncOverride);
   }
 
-  static buildWithDefaults (cmd: string, projectFolderName: string) {
+  static buildWithDefaults (cmd: string, projectFolderName?: string) {
     return BinaryPackager.buildWithDefaultsAndInjection(cmd, projectFolderName, execSync, readdirSync, writeFileSync, readFileSync);
   }
 
@@ -65,7 +65,7 @@ export class BinaryPackager {
   }
 
   toScriptObj () {
-    return (name: string) => new ScriptObject(this.cmd, name, this.projectFolderName, this.srcDir, this.transpiledDir, this.emitTranspiledSubDir);
+    return (name: string) => new ScriptObject(this.cmd, name, this.projectFolderName, this.srcDir, this.transpiledDir);
   }
 }
 
@@ -74,12 +74,11 @@ class ScriptObject {
   cmdName: string;
   transpiledPath: string;
   dir: string;
-  constructor(private cmd: string, private name: string, private projectFolderName: string, private srcDir: string, private transpiledDir, private emitTranspiledSubDir = false) {
-    const transpiledSrc = this.emitTranspiledSubDir ? `${this.projectFolderName}/` : '';
+  constructor(private cmd: string, private name: string, private projectFolderName: string, private srcDir: string, private transpiledDir) {
+    const transpiledSrc = this.projectFolderName || '';
       this.scriptPath = `${transpiledSrc}${this.srcDir}/${name}`;
       this.cmdName = this.cmd + '-' + name.replace('.js', '').replace('.ts', '');
-      this.transpiledPath = `${this.transpiledDir}/${this.scriptPath}`.replace('.ts', '.js');      
-      // this.transpiledPath = `${this.scriptPath}`.replace('.ts', '.js');      
+      this.transpiledPath = `${this.transpiledDir}/${this.scriptPath}`.replace('.ts', '.js');        
       this.dir = this.srcDir;
   }
 }

@@ -1,8 +1,8 @@
 #! /usr/bin/env node
 
 import { BinaryPackager } from "../src/packaging/BinaryPackager";
-import { argParser } from '../src/commandline/arg-parser';
+import { execIf } from "../src/commandline/exec-if";
 
-const {name, src} = argParser(process.argv) as {name: string, src: string};
-
-BinaryPackager.buildWithDefaults(name, src);
+execIf(function bind (name) {
+    BinaryPackager.buildWithDefaults(name);
+})
