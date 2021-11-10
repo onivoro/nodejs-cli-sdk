@@ -2,7 +2,6 @@
 export { BinaryCleaner } from './packaging/BinaryCleaner';
 export { BinaryPackager } from './packaging/BinaryPackager';
 export { getDirsAtPath, default as getDirs } from './disk-io/list-directories';
-export { FunctionParser } from './utils/FunctionParser';
 
 export { argParser } from './commandline/arg-parser';
 export { execIf } from './commandline/exec-if';
@@ -17,3 +16,6 @@ export { resolveOutputDirectory } from './disk-io/resolve-output-directory.funct
 export { saveObjectToDisk } from './disk-io/save-object-to-disk.function';
 export { save } from './disk-io/save.function';
 export { streamFile } from './disk-io/stream-file.function';
+
+export { FunctionParser } from './utils/FunctionParser';
+export { rando } from './utils/rando';
