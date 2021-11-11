@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 import * as path from 'path';
-import { getDirs } from '../disk-io/list-directories';
+import { getDirs } from '../src/disk-io/get-dirs';
 import { execSync as bash } from 'child_process';
 
 const bashCmd = process.argv[2];

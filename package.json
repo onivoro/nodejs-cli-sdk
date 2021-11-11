@@ -11,6 +11,7 @@
         "release": "npm version minor && npm link && npm publish --access public && git push"
     },
     "bin": {
+        "onx-all": "transpiled/cli/all.js",
         "onx-bind": "transpiled/cli/bind.js",
         "onx-fnr": "transpiled/cli/fnr.js",
         "onx-init": "transpiled/cli/init.js"

@@ -1,7 +1,7 @@
 
 export { BinaryCleaner } from './packaging/BinaryCleaner';
 export { BinaryPackager } from './packaging/BinaryPackager';
-export { getDirsAtPath, getDirs } from './disk-io/list-directories';
+export { getDirsAtPath, getDirs } from './disk-io/get-dirs';
 
 export { argParser } from './commandline/arg-parser';
 export { execIf } from './commandline/exec-if';

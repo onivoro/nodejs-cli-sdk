@@ -19,16 +19,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 exports.__esModule = true;
-exports.getDirsAtPath = void 0;
+exports.getDirsAtPath = exports.getDirs = void 0;
 var fs = __importStar(require("fs"));
 var path = __importStar(require("path"));
 var identity = function (i) { return i; };
-function default_1(relativePath, showDotDirs, showNodeModules) {
+function getDirs(relativePath, showDotDirs, showNodeModules) {
     if (showDotDirs === void 0) { showDotDirs = false; }
     if (showNodeModules === void 0) { showNodeModules = false; }
     return getDirsAtPath(process.cwd(), relativePath, showDotDirs, showNodeModules);
 }
-exports["default"] = default_1;
+exports.getDirs = getDirs;
 ;
 function getDirsAtPath(cwdOverride, relativePath, showDotDirs, showNodeModules) {
     if (relativePath === void 0) { relativePath = '.'; }
