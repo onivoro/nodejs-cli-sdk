@@ -17,5 +17,9 @@ export { saveObjectToDisk } from './disk-io/save-object-to-disk.function';
 export { save } from './disk-io/save.function';
 export { streamFile } from './disk-io/stream-file.function';
 
+export { camel } from './text/camel';
+export { kebab } from './text/kebab';
+export { snake } from './text/snake';
+
 export { FunctionParser } from './utils/FunctionParser';
 export { rando } from './utils/rando';

@@ -13,8 +13,14 @@
     "bin": {
         "onx-all": "transpiled/cli/all.js",
         "onx-bind": "transpiled/cli/bind.js",
+        "onx-camel": "transpiled/cli/camel.js",
+        "onx-constant": "transpiled/cli/constant.js",
         "onx-fnr": "transpiled/cli/fnr.js",
-        "onx-init": "transpiled/cli/init.js"
+        "onx-init": "transpiled/cli/init.js",
+        "onx-kebab": "transpiled/cli/kebab.js",
+        "onx-lower": "transpiled/cli/lower.js",
+        "onx-snake": "transpiled/cli/snake.js",
+        "onx-upper": "transpiled/cli/upper.js"
     },
     "repository": {
         "type": "git",
@@ -33,6 +39,9 @@
         "typescript": "latest"
     },
     "dependencies": {
+        "lodash.camelcase": "^4.3.0",
+        "lodash.kebabcase": "^4.1.1",
+        "lodash.snakecase": "^4.1.1",
         "rxjs": "^7.4.0"
     }
 }
