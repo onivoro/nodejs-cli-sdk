@@ -3,7 +3,7 @@ import * as path from 'path';
 
 const identity = i => i;
 
-export default function (relativePath?: string, showDotDirs = false, showNodeModules = false): string[] {
+export function getDirs (relativePath?: string, showDotDirs = false, showNodeModules = false): string[] {
   return getDirsAtPath(process.cwd(), relativePath, showDotDirs, showNodeModules);
 };
 
