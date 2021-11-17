@@ -1,15 +1,11 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.BinaryPackager = void 0;
-var child_process_1 = require("child_process");
-var fs_1 = require("fs");
-var BinaryCleaner_1 = require("./BinaryCleaner");
-var BinaryPackager = /** @class */ (function () {
-    function BinaryPackager(cmd, projectFolderName, packagePath, srcDir, transpiledDir, binDir, execSyncOverride, readdirSyncOverride, writeFileSyncOverride, readFileSyncOverride) {
-        if (packagePath === void 0) { packagePath = 'package.json'; }
-        if (srcDir === void 0) { srcDir = 'cli'; }
-        if (transpiledDir === void 0) { transpiledDir = 'transpiled'; }
-        if (binDir === void 0) { binDir = '.binary'; }
+const child_process_1 = require("child_process");
+const fs_1 = require("fs");
+const BinaryCleaner_1 = require("./BinaryCleaner");
+class BinaryPackager {
+    constructor(cmd, projectFolderName, packagePath = 'package.json', srcDir = 'cli', transpiledDir = 'transpiled', binDir = '.binary', execSyncOverride, readdirSyncOverride, writeFileSyncOverride, readFileSyncOverride) {
         this.cmd = cmd;
         this.projectFolderName = projectFolderName;
         this.packagePath = packagePath;
@@ -21,48 +17,46 @@ var BinaryPackager = /** @class */ (function () {
         this.writeFileSyncOverride = writeFileSyncOverride;
         this.readFileSyncOverride = readFileSyncOverride;
         this.emitTranspiledSubDir = false;
-        var rawPackageContents = (this.readFileSyncOverride || fs_1.readFileSync)(this.packagePath);
-        var packageContents = JSON.parse(rawPackageContents);
+        const rawPackageContents = (this.readFileSyncOverride || fs_1.readFileSync)(this.packagePath);
+        const packageContents = JSON.parse(rawPackageContents);
         packageContents.bin = {};
-        var cliWrapperFiles = (this.readdirSyncOverride || fs_1.readdirSync)(this.srcDir)
+        const cliWrapperFiles = (this.readdirSyncOverride || fs_1.readdirSync)(this.srcDir)
             .map(this.toScriptObj());
-        (this.execSyncOverride || child_process_1.execSync)("rm -rf " + this.binDir + " && mkdir " + this.binDir);
+        (this.execSyncOverride || child_process_1.execSync)(`rm -rf ${this.binDir} && mkdir ${this.binDir}`);
         cliWrapperFiles
-            .forEach(function (script) {
-            console.log("adding script to package.json \"bin\" section: " + script.cmdName + " => " + script.scriptPath);
+            .forEach((script) => {
+            console.log(`adding script to package.json "bin" section: ${script.cmdName} => ${script.scriptPath}`);
             packageContents.bin[script.cmdName] = script.transpiledPath;
             BinaryCleaner_1.BinaryCleaner.deleteBinaryLink(script.cmdName, undefined);
         });
         (this.writeFileSyncOverride || fs_1.writeFileSync)(this.packagePath, JSON.stringify(packageContents, null, 4), 'utf8');
     }
-    BinaryPackager.buildWithDefaultsAndInjection = function (cmd, projectFolderName, execSyncOverride, readdirSyncOverride, writeFileSyncOverride, readFileSyncOverride) {
+    static buildWithDefaultsAndInjection(cmd, projectFolderName, execSyncOverride, readdirSyncOverride, writeFileSyncOverride, readFileSyncOverride) {
         return new BinaryPackager(cmd, projectFolderName, undefined, undefined, undefined, undefined, execSyncOverride, readdirSyncOverride, writeFileSyncOverride, readFileSyncOverride);
-    };
-    BinaryPackager.buildWithDefaults = function (cmd, projectFolderName) {
+    }
+    static buildWithDefaults(cmd, projectFolderName) {
         return BinaryPackager.buildWithDefaultsAndInjection(cmd, projectFolderName, child_process_1.execSync, fs_1.readdirSync, fs_1.writeFileSync, fs_1.readFileSync);
-    };
-    BinaryPackager.build = function (cmd, projectFolderName, packagePath, srcDir, transpiledDir, binDir, execSyncOverride, readdirSyncOverride, writeFileSyncOverride, readFileSyncOverride) {
+    }
+    static build(cmd, projectFolderName, packagePath, srcDir, _transpiledDir, _binDir, execSyncOverride, readdirSyncOverride, writeFileSyncOverride, readFileSyncOverride) {
         return new BinaryPackager(cmd, projectFolderName, packagePath, srcDir, undefined, undefined, execSyncOverride, readdirSyncOverride, writeFileSyncOverride, readFileSyncOverride);
-    };
-    BinaryPackager.prototype.toScriptObj = function () {
-        var _this = this;
-        return function (name) { return new ScriptObject(_this.cmd, name, _this.projectFolderName, _this.srcDir, _this.transpiledDir); };
-    };
-    return BinaryPackager;
-}());
+    }
+    toScriptObj() {
+        return (name) => new ScriptObject(this.cmd, name, this.projectFolderName, this.srcDir, this.transpiledDir);
+    }
+}
 exports.BinaryPackager = BinaryPackager;
-var ScriptObject = /** @class */ (function () {
-    function ScriptObject(cmd, name, projectFolderName, srcDir, transpiledDir) {
+class ScriptObject {
+    constructor(cmd, name, projectFolderName, srcDir, transpiledDir) {
         this.cmd = cmd;
         this.name = name;
         this.projectFolderName = projectFolderName;
         this.srcDir = srcDir;
         this.transpiledDir = transpiledDir;
-        var transpiledSrc = this.projectFolderName || '';
-        this.scriptPath = "" + transpiledSrc + this.srcDir + "/" + name;
-        this.cmdName = this.cmd + '-' + name.replace('.js', '').replace('.ts', '');
-        this.transpiledPath = (this.transpiledDir + "/" + this.scriptPath).replace('.ts', '.js');
+        const transpiledSrc = this.projectFolderName || '';
+        this.scriptPath = `${transpiledSrc}${this.srcDir}/${name}`;
+        this.cmdName = this.cmd + '-' + this.name.replace('.js', '').replace('.ts', '');
+        this.transpiledPath = `${this.transpiledDir}/${this.scriptPath}`.replace('.ts', '.js');
         this.dir = this.srcDir;
     }
-    return ScriptObject;
-}());
+}
+//# sourceMappingURL=BinaryPackager.js.map

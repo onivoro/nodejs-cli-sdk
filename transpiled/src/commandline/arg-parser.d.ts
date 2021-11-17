@@ -1,1 +1,3 @@
-export declare function argParser(args: any): {};
+export declare function argParser(args: any): {
+    _: any[];
+};

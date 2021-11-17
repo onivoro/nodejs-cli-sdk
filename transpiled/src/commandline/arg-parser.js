@@ -1,7 +1,7 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.argParser = void 0;
-var DOUBLE_DASH = /^--/;
+const DOUBLE_DASH = /^--/;
 function isFlag(arg) {
     return arg && DOUBLE_DASH.test(arg);
 }
@@ -15,14 +15,33 @@ function argParser(args) {
     if (helpRequested(args)) {
         return null;
     }
-    var output = {};
-    for (var i = 0; i < args.length; i++) {
-        var current = args[i];
-        var next = args[i + 1];
-        if (isFlag(current)) {
-            output[fromFlag(current)] = next;
+    const output = { _: [] };
+    let previous;
+    let pushAll = false;
+    for (let i = 0; i < args.length; i++) {
+        const current = args[i];
+        const next = args[i + 1];
+        if (current === '--') {
+            pushAll = true;
         }
+        else if (pushAll) {
+            output._.push(current);
+        }
+        else if (isFlag(current)) {
+            const key = fromFlag(current);
+            if (!next || isFlag(next)) {
+                output[key] = true;
+            }
+            else {
+                output[key] = next;
+            }
+        }
+        else if (!previous || !isFlag(previous)) {
+            output._.push(current);
+        }
+        previous = current;
     }
     return output;
 }
 exports.argParser = argParser;
+//# sourceMappingURL=arg-parser.js.map

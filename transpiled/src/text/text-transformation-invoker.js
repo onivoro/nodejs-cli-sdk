@@ -1,12 +1,10 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.TextTransformationInvoker = void 0;
-var TextTransformationInvoker = /** @class */ (function () {
-    function TextTransformationInvoker() {
-    }
-    TextTransformationInvoker.transformAndPipeToStdOut = function (fn, input) {
+class TextTransformationInvoker {
+    static transformAndPipeToStdOut(fn, input) {
         console.log(fn(input));
-    };
-    return TextTransformationInvoker;
-}());
+    }
+}
 exports.TextTransformationInvoker = TextTransformationInvoker;
+//# sourceMappingURL=text-transformation-invoker.js.map

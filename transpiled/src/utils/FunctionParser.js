@@ -1,14 +1,11 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.FunctionParser = void 0;
-var FunctionParser = /** @class */ (function () {
-    function FunctionParser() {
+class FunctionParser {
+    static parseFunctionArguments(functionBody) {
+        return functionBody.split('(')[1].split(')')[0].split(',').map(s => s.trim());
     }
-    FunctionParser.parseFunctionArguments = function (functionBody) {
-        return functionBody.split('(')[1].split(')')[0].split(',').map(function (s) { return s.trim(); });
-    };
-    return FunctionParser;
-}());
+}
 exports.FunctionParser = FunctionParser;
 // import { FunctionParser } from "../../src/utils/FunctionParser";
 // describe('FunctionParser', () => {
@@ -27,3 +24,4 @@ exports.FunctionParser = FunctionParser;
 //         });
 //     });
 // });
+//# sourceMappingURL=FunctionParser.js.map

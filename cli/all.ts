@@ -25,7 +25,7 @@ if (!bashCmd) {
 
     (projectNames).forEach(project => {
         try {
-            const output = bash(bashCmd, { cwd: path.resolve(process.cwd(), project) })
+            bash(bashCmd, { cwd: path.resolve(process.cwd(), project) })
                 .toString()
                 .split('\n')
                 .filter(line => line && line.trim().length)

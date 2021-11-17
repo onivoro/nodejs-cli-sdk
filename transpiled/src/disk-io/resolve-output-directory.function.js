@@ -1,8 +1,9 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.resolveOutputDirectory = void 0;
-var path_1 = require("path");
-var resolveOutputDirectory = function (subDirectory, parentDirectory) {
+const path_1 = require("path");
+const resolveOutputDirectory = (subDirectory, parentDirectory) => {
     return (0, path_1.resolve)(parentDirectory, subDirectory);
 };
 exports.resolveOutputDirectory = resolveOutputDirectory;
+//# sourceMappingURL=resolve-output-directory.function.js.map

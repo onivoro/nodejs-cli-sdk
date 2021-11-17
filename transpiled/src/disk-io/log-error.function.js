@@ -1,9 +1,10 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.logError = void 0;
-var logError = function (e) {
+const logError = e => {
     if (e) {
         console.log(e);
     }
 };
 exports.logError = logError;
+//# sourceMappingURL=log-error.function.js.map

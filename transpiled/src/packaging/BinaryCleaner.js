@@ -1,31 +1,29 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.BinaryCleaner = void 0;
-var child_process_1 = require("child_process");
-var path_1 = require("path");
-var BinaryCleaner = /** @class */ (function () {
-    function BinaryCleaner() {
+const child_process_1 = require("child_process");
+const path_1 = require("path");
+class BinaryCleaner {
+    static deleteBinaryLink(command, execSyncOverride) {
+        const bash = execSyncOverride || child_process_1.execSync;
+        const dir = BinaryCleaner.getNodeBin();
+        dir && bash((`rm -rf ${dir}/${command}`));
     }
-    BinaryCleaner.deleteBinaryLink = function (command, execSyncOverride) {
-        var bash = execSyncOverride || child_process_1.execSync;
-        var dir = BinaryCleaner.getNodeBin();
-        dir && bash(("rm -rf " + dir + "/" + command));
-    };
-    BinaryCleaner.getNodeBin = function (execSyncOverride) {
-        var bash = execSyncOverride || child_process_1.execSync;
+    static getNodeBin(execSyncOverride) {
+        const bash = execSyncOverride || child_process_1.execSync;
         try {
-            var filePathToTest = bash("which npm")
+            const filePathToTest = bash(`which npm`)
                 .toString()
                 .split('\n')
-                .filter(function (i) { return i && i.length; })[0];
-            var dir = (0, path_1.parse)(filePathToTest).dir;
+                .filter(i => i && i.length)[0];
+            const { dir } = (0, path_1.parse)(filePathToTest);
             console.log(dir);
             return dir;
         }
         catch (e) {
             return '';
         }
-    };
-    return BinaryCleaner;
-}());
+    }
+}
 exports.BinaryCleaner = BinaryCleaner;
+//# sourceMappingURL=BinaryCleaner.js.map

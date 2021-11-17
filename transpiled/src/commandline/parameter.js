@@ -1,41 +1,41 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.Parameter = void 0;
-var Parameter = /** @class */ (function () {
-    function Parameter(name, options, optional) {
+class Parameter {
+    constructor(name, options, optional) {
         this.name = name;
         this.options = options;
         this.optional = optional;
     }
-    Parameter.prototype.isInvalid = function (value) {
+    isInvalid(value) {
         if (!value && !this.optional) {
             if (this.hasOptions()) {
                 return this.getOptionWarning();
             }
-            return "\n--" + this.name + " is required";
+            return `\n--${this.name} is required`;
         }
-    };
-    Parameter.prototype.getOptionText = function () {
-        return this.options.map(function (o) { return "\n    * " + o; }).join('');
-    };
-    Parameter.prototype.getOptionWarning = function () {
-        return "\n--" + this.name + " must be one of => " + this.getOptionText();
-    };
-    Parameter.prototype.hasOptions = function () {
+    }
+    getOptionText() {
+        return this.options.map(o => `\n    * ${o}`).join('');
+    }
+    getOptionWarning() {
+        return `\n--${this.name} must be one of => ${this.getOptionText()}`;
+    }
+    hasOptions() {
         return this.options && this.options.length;
-    };
-    Parameter.validateAll = function (config, params) {
-        var errors = [];
-        var expectedParams = Object.keys(config);
-        expectedParams.forEach(function (expectedParamName) {
-            var paramInstance = config[expectedParamName];
-            var error = paramInstance.isInvalid(params && params[expectedParamName]);
+    }
+    static validateAll(config, params) {
+        const errors = [];
+        const expectedParams = Object.keys(config);
+        expectedParams.forEach(expectedParamName => {
+            const paramInstance = config[expectedParamName];
+            const error = paramInstance.isInvalid(params && params[expectedParamName]);
             if (error) {
                 errors.push(error);
             }
         });
         return errors;
-    };
-    return Parameter;
-}());
+    }
+}
 exports.Parameter = Parameter;
+//# sourceMappingURL=parameter.js.map

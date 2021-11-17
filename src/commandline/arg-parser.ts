@@ -17,14 +17,31 @@ export function argParser(args) {
     return null;
   }
 
-  const output = {};
+  const output = { _: [] };
+  let previous;
+  let pushAll = false;
 
   for (let i = 0; i < args.length; i++) {
     const current = args[i];
     const next = args[i + 1];
-    if (isFlag(current)) {
-      output[fromFlag(current)] = next;
+    if (current === '--') {
+      pushAll = true;
     }
+    else if (pushAll) {
+      output._.push(current);
+    }
+    else if (isFlag(current)) {
+      const key = fromFlag(current);
+      if (!next || isFlag(next)) {
+        output[key] = true;
+      } else {
+        output[key] = next;
+      }
+    } else if (!previous || !isFlag(previous)) {
+      output._.push(current)
+    }
+
+    previous = current;
   }
 
   return output;

@@ -13,7 +13,7 @@ export declare class BinaryPackager {
     emitTranspiledSubDir: boolean;
     static buildWithDefaultsAndInjection(cmd: string, projectFolderName: string, execSyncOverride: (command: string) => Buffer, readdirSyncOverride: (path: string) => string[], writeFileSyncOverride: (path: string | number, data: any, options?: any) => void, readFileSyncOverride: (path: string) => any): BinaryPackager;
     static buildWithDefaults(cmd: string, projectFolderName?: string): BinaryPackager;
-    static build(cmd: string, projectFolderName: string, packagePath: string, srcDir: string, transpiledDir: string, binDir: string, execSyncOverride: (command: string) => Buffer, readdirSyncOverride: (path: string) => string[], writeFileSyncOverride: (path: string | number, data: any, options?: any) => void, readFileSyncOverride: (path: string) => any): BinaryPackager;
+    static build(cmd: string, projectFolderName: string, packagePath: string, srcDir: string, _transpiledDir: string, _binDir: string, execSyncOverride: (command: string) => Buffer, readdirSyncOverride: (path: string) => string[], writeFileSyncOverride: (path: string | number, data: any, options?: any) => void, readFileSyncOverride: (path: string) => any): BinaryPackager;
     constructor(cmd: string, projectFolderName: string, packagePath: string, srcDir: string, transpiledDir: string, binDir: string, execSyncOverride: (command: string) => Buffer, readdirSyncOverride: (path: string) => string[], writeFileSyncOverride: (path: string | number, data: any, options?: any) => void, readFileSyncOverride: (path: string) => any);
     toScriptObj(): (name: string) => ScriptObject;
 }

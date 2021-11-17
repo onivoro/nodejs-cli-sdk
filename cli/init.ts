@@ -3,7 +3,7 @@
 import {execSync} from "child_process";
 import { execIf } from "../src";
 
-execIf(function init(web, name) {
+execIf(function init(web, _name) {
     if (web) {
         execSync(`git clone https://github.com/icedlee337/popcorn-bingo.git --depth 1 --no-tags`);
         // todo: replace all the things

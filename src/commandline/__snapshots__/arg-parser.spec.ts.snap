@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`argParser mixed cases given ["--debug","--verbose","--","file1.txt"] 1`] = `
+Object {
+  "_": Array [
+    "file1.txt",
+  ],
+  "debug": true,
+  "verbose": true,
+}
+`;
+
+exports[`argParser mixed cases given ["--find","caat","--replace","cat","main.js"] 1`] = `
+Object {
+  "_": Array [
+    "main.js",
+  ],
+  "find": "caat",
+  "replace": "cat",
+}
+`;
+
+exports[`argParser when args provided with no flags or options given ["hot dogs","hamburgers","chicken"] 1`] = `
+Object {
+  "_": Array [
+    "hot dogs",
+    "hamburgers",
+    "chicken",
+  ],
+}
+`;
+
+exports[`argParser when double-dash options provided with no value given ["--debug","--verbose"] 1`] = `
+Object {
+  "_": Array [],
+  "debug": true,
+  "verbose": true,
+}
+`;
+
+exports[`argParser when double-dash options provided with no value given ["--debug"] 1`] = `
+Object {
+  "_": Array [],
+  "debug": true,
+}
+`;
+
+exports[`argParser when double-dash options/values provided given ["--port","1234"] 1`] = `
+Object {
+  "_": Array [],
+  "port": "1234",
+}
+`;

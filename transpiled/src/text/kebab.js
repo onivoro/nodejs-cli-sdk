@@ -1,8 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.kebab = void 0;
-var lodash_kebabcase_1 = __importDefault(require("lodash.kebabcase"));
-exports.kebab = lodash_kebabcase_1["default"];
+const lodash_kebabcase_1 = require("lodash.kebabcase");
+exports.kebab = lodash_kebabcase_1.default;
+//# sourceMappingURL=kebab.js.map

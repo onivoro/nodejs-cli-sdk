@@ -23,8 +23,8 @@ export class BinaryPackager {
     projectFolderName: string,
     packagePath: string,
     srcDir: string,
-    transpiledDir: string,
-    binDir: string,
+    _transpiledDir: string,
+    _binDir: string,
     execSyncOverride: (command: string) => Buffer,
     readdirSyncOverride: (path: string) => string[],
     writeFileSyncOverride: (path: string | number, data: any, options?: any) => void,
@@ -77,7 +77,7 @@ class ScriptObject {
   constructor(private cmd: string, private name: string, private projectFolderName: string, private srcDir: string, private transpiledDir) {
     const transpiledSrc = this.projectFolderName || '';
       this.scriptPath = `${transpiledSrc}${this.srcDir}/${name}`;
-      this.cmdName = this.cmd + '-' + name.replace('.js', '').replace('.ts', '');
+      this.cmdName = this.cmd + '-' + this.name.replace('.js', '').replace('.ts', '');
       this.transpiledPath = `${this.transpiledDir}/${this.scriptPath}`.replace('.ts', '.js');        
       this.dir = this.srcDir;
   }
