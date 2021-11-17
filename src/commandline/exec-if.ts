@@ -3,7 +3,7 @@ import { argParser } from "./arg-parser";
 
 export function execIf(main: Function, otherwise?: Function) {
 
-    const cliArgs = argParser(process.argv);
+    const cliArgs = argParser(process.argv.slice(2));
     const fnArgs = FunctionParser.parseFunctionArguments(`${main}`);
     const fnVals = fnArgs.map(fa => cliArgs[fa]);
 

@@ -4,7 +4,7 @@ exports.execIf = void 0;
 const FunctionParser_1 = require("../utils/FunctionParser");
 const arg_parser_1 = require("./arg-parser");
 function execIf(main, otherwise) {
-    const cliArgs = (0, arg_parser_1.argParser)(process.argv);
+    const cliArgs = (0, arg_parser_1.argParser)(process.argv.slice(2));
     const fnArgs = FunctionParser_1.FunctionParser.parseFunctionArguments(`${main}`);
     const fnVals = fnArgs.map(fa => cliArgs[fa]);
     if (fnArgs

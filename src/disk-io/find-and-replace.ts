@@ -1,8 +1,7 @@
 import { execSync } from "child_process";
 import { writeFile } from "fs";
 
-export function findAndReplace(find, replace) {
-    const _ = [];
+export function findAndReplace(find, replace, _) {
     const w = false;
     const flagObject = { w };
     const flagKeys = Object.keys(flagObject);

@@ -3,8 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.findAndReplace = void 0;
 const child_process_1 = require("child_process");
 const fs_1 = require("fs");
-function findAndReplace(find, replace) {
-    const _ = [];
+function findAndReplace(find, replace, _) {
     const w = false;
     const flagObject = { w };
     const flagKeys = Object.keys(flagObject);
