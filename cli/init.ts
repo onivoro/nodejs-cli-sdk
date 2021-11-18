@@ -1,14 +1,25 @@
 #! /usr/bin/env node
 
-import {execSync} from "child_process";
-import { execIf } from "../src";
+import { execSync } from "child_process";
+import { findAndReplace } from "src/disk-io/find-and-replace";
+import { execIf } from "src/commandline/exec-if";
+import { kebab } from "src/text/kebab";
 
-execIf(function init(web, _name) {
+
+execIf(function init(web, name) {
     if (web) {
-        execSync(`git clone https://github.com/icedlee337/popcorn-bingo.git --depth 1 --no-tags`);
-        // todo: replace all the things
+        const webPj = 'popcorn-bingo';
+        execSync(`git clone https://github.com/icedlee337/${webPj}.git --depth 1 --no-tags`);        
+        replace(webPj, name);
     } else {
-        execSync(`git clone https://github.com/onivoro/nodejs-cli-starter.git --depth 1 --no-tags`);
-        // todo: replace all the things
+        const serverPj = 'popcorn-bingo';
+        execSync(`git clone https://github.com/onivoro/${serverPj}.git --depth 1 --no-tags`);
+        replace(serverPj, name);
     }
 })
+
+function replace(find, replace) {
+    const kebabReplace = kebab(replace);
+    execSync(`mv ${find} ${kebabReplace}`);
+    findAndReplace(find, kebabReplace, []);
+}
