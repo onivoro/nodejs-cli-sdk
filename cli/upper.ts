@@ -2,4 +2,4 @@
 
 import { TextTransformationInvoker } from '../src/text/text-transformation-invoker';
 
-TextTransformationInvoker.transformAndPipeToStdOut(s => s.toUpperCase(), process.argv[2]);
+TextTransformationInvoker.transformAndPipeToStdOut(s => s?.toUpperCase?.(), process.argv[2]);

@@ -1,3 +1,3 @@
-import snakeCase from 'lodash.snakecase';
+import { snakeCase } from 'lodash';
 
 export const snake = snakeCase;

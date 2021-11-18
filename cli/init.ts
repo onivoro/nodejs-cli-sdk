@@ -3,7 +3,7 @@
 import { execSync } from "child_process";
 import { findAndReplace } from "../src/disk-io/find-and-replace";
 import { execIf } from "../src/commandline/exec-if";
-import { kebab } from "../src/text/kebab";
+import { kebabCase } from "lodash";
 
 
 execIf(function init(web, name) {
@@ -19,7 +19,7 @@ execIf(function init(web, name) {
 })
 
 function replace(find, replace) {
-    const kebabReplace = kebab(replace);
+    const kebabReplace = kebabCase(replace);
     execSync(`mv ${find} ${kebabReplace}`);
     findAndReplace(find, kebabReplace, []);
 }
