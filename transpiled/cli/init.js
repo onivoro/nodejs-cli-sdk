@@ -2,9 +2,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const child_process_1 = require("child_process");
-const find_and_replace_1 = require("src/disk-io/find-and-replace");
-const exec_if_1 = require("src/commandline/exec-if");
-const kebab_1 = require("src/text/kebab");
+const find_and_replace_1 = require("../src/disk-io/find-and-replace");
+const exec_if_1 = require("../src/commandline/exec-if");
+const kebab_1 = require("../src/text/kebab");
 (0, exec_if_1.execIf)(function init(web, name) {
     if (web) {
         const webPj = 'popcorn-bingo';

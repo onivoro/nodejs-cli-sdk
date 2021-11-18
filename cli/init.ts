@@ -1,9 +1,9 @@
 #! /usr/bin/env node
 
 import { execSync } from "child_process";
-import { findAndReplace } from "src/disk-io/find-and-replace";
-import { execIf } from "src/commandline/exec-if";
-import { kebab } from "src/text/kebab";
+import { findAndReplace } from "../src/disk-io/find-and-replace";
+import { execIf } from "../src/commandline/exec-if";
+import { kebab } from "../src/text/kebab";
 
 
 execIf(function init(web, name) {
