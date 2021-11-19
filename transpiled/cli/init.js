@@ -19,7 +19,7 @@ const lodash_1 = require("lodash");
 });
 function replace(find, replace) {
     const kebabReplace = (0, lodash_1.kebabCase)(replace);
-    (0, child_process_1.execSync)(`mv ${find} ${kebabReplace}`);
+    (0, child_process_1.execSync)(`mv ${find} ${kebabReplace} && cd ${kebabReplace}`);
     (0, find_and_replace_1.findAndReplace)(find, kebabReplace, []);
 }
 //# sourceMappingURL=init.js.map
