@@ -1,1 +1,1 @@
-export declare const snake: any;
+export declare const snake: (string?: string) => string;

@@ -1,1 +1,1 @@
-export declare const camel: any;
+export declare const camel: (string?: string) => string;

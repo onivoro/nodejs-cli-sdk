@@ -1,1 +1,1 @@
-export declare const kebab: any;
+export declare const kebab: (string?: string) => string;

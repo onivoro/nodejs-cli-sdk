@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.snake = void 0;
-const lodash_snakecase_1 = require("lodash.snakecase");
-exports.snake = lodash_snakecase_1.default;
+const lodash_1 = require("lodash");
+exports.snake = lodash_1.snakeCase;
 //# sourceMappingURL=snake.js.map
