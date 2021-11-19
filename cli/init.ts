@@ -4,6 +4,7 @@ import { execSync } from "child_process";
 import { findAndReplace } from "../src/disk-io/find-and-replace";
 import { execIf } from "../src/commandline/exec-if";
 import { kebabCase } from "lodash";
+import { resolve } from "path";
 
 
 execIf(function init(web, name) {
@@ -20,6 +21,7 @@ execIf(function init(web, name) {
 
 function replace(find, replace) {
     const kebabReplace = kebabCase(replace);
-    execSync(`mv ${find} ${kebabReplace} && cd ${kebabReplace}`);
+    execSync(`mv ${find} ${kebabReplace}`);
+    process.chdir(resolve(process.cwd(), kebabReplace))
     findAndReplace(find, kebabReplace, []);
 }
