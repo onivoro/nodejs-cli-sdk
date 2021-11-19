@@ -5,6 +5,7 @@ const child_process_1 = require("child_process");
 const find_and_replace_1 = require("../src/disk-io/find-and-replace");
 const exec_if_1 = require("../src/commandline/exec-if");
 const lodash_1 = require("lodash");
+const path_1 = require("path");
 (0, exec_if_1.execIf)(function init(web, name) {
     if (web) {
         const webPj = 'popcorn-bingo';
@@ -19,7 +20,8 @@ const lodash_1 = require("lodash");
 });
 function replace(find, replace) {
     const kebabReplace = (0, lodash_1.kebabCase)(replace);
-    (0, child_process_1.execSync)(`mv ${find} ${kebabReplace} && cd ${kebabReplace}`);
+    (0, child_process_1.execSync)(`mv ${find} ${kebabReplace}`);
+    process.chdir((0, path_1.resolve)(process.cwd(), kebabReplace));
     (0, find_and_replace_1.findAndReplace)(find, kebabReplace, []);
 }
 //# sourceMappingURL=init.js.map
