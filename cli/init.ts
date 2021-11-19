@@ -20,6 +20,6 @@ execIf(function init(web, name) {
 
 function replace(find, replace) {
     const kebabReplace = kebabCase(replace);
-    execSync(`mv ${find} ${kebabReplace}`);
+    execSync(`mv ${find} ${kebabReplace} && cd ${kebabReplace}`);
     findAndReplace(find, kebabReplace, []);
 }
