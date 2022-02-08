@@ -5,6 +5,7 @@ export { getDirsAtPath, getDirs } from './disk-io/get-dirs';
 
 export { argParser } from './commandline/arg-parser';
 export { execIf } from './commandline/exec-if';
+export { exec } from './commandline/exec';
 export { getAwsProfiles } from './commandline/get-aws-profiles';
 export { Parameter } from './commandline/parameter';
 export { profileParameter } from './commandline/profile.parameter';
