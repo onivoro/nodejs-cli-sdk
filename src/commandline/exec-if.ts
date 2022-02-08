@@ -1,26 +1,29 @@
 import { FunctionParser } from "../utils/FunctionParser";
 import { argParser } from "./arg-parser";
 
-export function execIf(main: Function, otherwise?: Function) {
+export function execIf(main: Function, otherwise?: Function, processArgs = process.argv.slice(2), consoleLog = console.log.bind(console)) {
 
-    const cliArgs = argParser(process.argv.slice(2));
+    const cliArgs = argParser(processArgs);
     const fnArgs = FunctionParser.parseFunctionArguments(`${main}`);
-    const fnVals = fnArgs.map(fa => cliArgs[fa]);
 
-    if (fnArgs
+    const fnValsFn = () => fnArgs.map(fa => cliArgs[fa]);
+
+    if (cliArgs === null) {
+        consoleLog(`Expected the following:\n${fnArgs.join(', \n')}`);
+    } else if (fnArgs
         .reduce((valid, arg) => valid && cliArgs[arg], true)) {
 
-        main.apply(main, fnVals);
+        main.apply(main, fnValsFn());
     } else {
-        console.log(`Expected the following:\n${fnArgs.join(', \n')}`);
-        console.log(`Received the following:\n${Object.entries(cliArgs).map(e => `${e[0]}: ${e[1]}`)}`);
+        consoleLog(`Expected the following:\n${fnArgs.join(', \n')}`);
+        consoleLog(`Received the following:\n${Object.entries(cliArgs).map(e => `${e[0]}: ${e[1]}`)}`);
 
         if (otherwise) {
-            console.log(`invoking otherwise`);
+            consoleLog(`invoking otherwise`);
             otherwise(
                 cliArgs,
                 fnArgs,
-                fnVals,
+                fnValsFn(),
             );
         }
     }
