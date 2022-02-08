@@ -1,3 +1,3 @@
-export declare function argParser(args: any): {
-    _: any[];
+export declare function argParser<T>(args: any): T & {
+    _?: [];
 };

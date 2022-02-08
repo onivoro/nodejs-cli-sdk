@@ -12,12 +12,12 @@ function helpRequested(args) {
   return args && args.length == 1 && args[0].replace(DOUBLE_DASH, '') === 'help';
 }
 
-export function argParser(args) {
+export function argParser<T>(args): T & { _?: [] } {
   if (helpRequested(args)) {
     return null;
   }
 
-  const output = { _: [] };
+  const output: any = { _: [] };
   let previous;
   let pushAll = false;
 
