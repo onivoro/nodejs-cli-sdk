@@ -10,14 +10,9 @@ export function findAndReplace(find, replace, _) {
 
     const flags = fs.length ? ` -${fs.join(' -')}` : '';
 
-    let chimiz = `git grep --name-only ${flags} -F`;
-    let findFilesCmd = `git grep --name-only ${flags} -F "${find}"`;
+    let findFilesCmd = `git grep --name-only ${flags} -F`;    
 
-    if (_ && _.length) {
-        findFilesCmd += ` -- ${_.join(' ')}`;
-    }
-
-    const args = [...chimiz.split(' ').slice(1), find].filter(Boolean);
+    const args = [...findFilesCmd.split(' ').slice(1), find, '--', ...(_ || [])].filter(Boolean);
     const {stdout, stderr} = spawnSync('git', args, {encoding: 'utf-8'});
     if(stderr) {
         console.log(stderr);
