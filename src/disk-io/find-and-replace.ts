@@ -10,19 +10,21 @@ export function findAndReplace(find, replace, _) {
 
     const flags = fs.length ? ` -${fs.join(' -')}` : '';
 
-    let findFilesPartialCmd = `git grep --name-only ${flags} -F`;
+    let chimiz = `git grep --name-only ${flags} -F`;
     let findFilesCmd = `git grep --name-only ${flags} -F "${find}"`;
 
     if (_ && _.length) {
         findFilesCmd += ` -- ${_.join(' ')}`;
     }
 
-    const files = spawnSync('bin/sh', ['-c', ...findFilesPartialCmd.split(' '), find]).toString().split('\n').filter(f => f && f.trim().length);
-    const filesz = execSync(findFilesCmd).toString().split('\n').filter(f => f && f.trim().length);
-
-    console.log(filesz);
-    console.log(files);
-
+    const args = [...chimiz.split(' ').slice(1), find].filter(Boolean);
+    const {stdout, stderr} = spawnSync('git', args, {encoding: 'utf-8'});
+    if(stderr) {
+        console.log(stderr);
+    }
+    const files = stdout
+        .toString().split('\n').filter(f => f && f.trim().length);    
+    
     if (replace) {
         const jsFind = w ? `\\b${find}\\b` : find;
         files.forEach(f => {
