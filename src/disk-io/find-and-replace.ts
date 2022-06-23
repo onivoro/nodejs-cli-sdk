@@ -1,24 +1,9 @@
-import { execSync, spawnSync } from "child_process";
+import { execSync } from "child_process";
 import { writeFile } from "fs";
+import {GrepService} from '@onivoro/server-git';
 
-export function findAndReplace(find, replace, _) {
-    const w = false;
-    const flagObject = { w };
-    const flagKeys = Object.keys(flagObject);
-    const fs = flagKeys
-        .filter(flagKey => flagObject[flagKey])
-
-    const flags = fs.length ? ` -${fs.join(' -')}` : '';
-
-    let findFilesCmd = `git grep --name-only ${flags} -F`;    
-
-    const args = [...findFilesCmd.split(' ').slice(1), find, '--', ...(_ || [])].filter(Boolean);
-    const {stdout, stderr} = spawnSync('git', args, {encoding: 'utf-8'});
-    if(stderr) {
-        console.log(stderr);
-    }
-    const files = stdout
-        .toString().split('\n').filter(f => f && f.trim().length);    
+export async function findAndReplace(find, replace, _) {    
+    const files = await new GrepService().grep(find, process.cwd(), _);
     
     if (replace) {
         const jsFind = w ? `\\b${find}\\b` : find;
