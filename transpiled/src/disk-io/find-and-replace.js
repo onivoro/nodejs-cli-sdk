@@ -10,11 +10,15 @@ function findAndReplace(find, replace, _) {
     const fs = flagKeys
         .filter(flagKey => flagObject[flagKey]);
     const flags = fs.length ? ` -${fs.join(' -')}` : '';
+    let findFilesPartialCmd = `git grep --name-only ${flags} -F`;
     let findFilesCmd = `git grep --name-only ${flags} -F "${find}"`;
     if (_ && _.length) {
         findFilesCmd += ` -- ${_.join(' ')}`;
     }
-    const files = (0, child_process_1.execSync)(findFilesCmd).toString().split('\n').filter(f => f && f.trim().length);
+    const files = (0, child_process_1.spawnSync)('bin/sh', ['-c', ...findFilesPartialCmd.split(' '), find]).toString().split('\n').filter(f => f && f.trim().length);
+    const filesz = (0, child_process_1.execSync)(findFilesCmd).toString().split('\n').filter(f => f && f.trim().length);
+    console.log(filesz);
+    console.log(files);
     if (replace) {
         const jsFind = w ? `\\b${find}\\b` : find;
         files.forEach(f => {
