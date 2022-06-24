@@ -1,3 +1,4 @@
-export declare function argParser<T>(args: any): T & {
+export declare function argParser<T>(): T & {
     _?: [];
+    help?: boolean;
 };

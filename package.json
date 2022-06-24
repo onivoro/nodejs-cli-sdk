@@ -46,6 +46,8 @@
     "dependencies": {
         "@onivoro/server-git": "^0.2.0",
         "lodash": "^4.17.21",
-        "rxjs": "^7.4.0"
+        "reflect-metadata": "^0.1.13",
+        "rxjs": "^7.4.0",
+        "yargs-parser": "^21.0.1"
     }
 }

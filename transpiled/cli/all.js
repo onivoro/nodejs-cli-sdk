@@ -7,10 +7,10 @@ const child_process_1 = require("child_process");
 const bashCmd = process.argv[2];
 const instructions = `
         USEAGE:
-        arc-all 'cmd:string' relPath1:string? relPath2:string? ... relPathN:string?
+        onx-all 'cmd:string' relPath1:string? relPath2:string? ... relPathN:string?
 
         EXAMPLE:
-        arc-all 'ls -lah' /usr/bin /usr/local
+        onx-all 'ls -lah' /usr/bin /usr/local
         `;
 if (!bashCmd) {
     console.log(instructions);

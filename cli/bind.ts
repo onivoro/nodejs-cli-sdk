@@ -1,8 +1,13 @@
 #! /usr/bin/env node
 
 import { BinaryPackager } from "../src/packaging/BinaryPackager";
-import { execIf } from "../src/commandline/exec-if";
+import { helpMe } from "../src/commandline/help-me";
+import { argParser } from "../src/commandline/arg-parser";
 
-execIf(function bind (name) {
+const { name } = argParser();
+
+helpMe(bind, () => bind(name))
+
+function bind (name) {
     BinaryPackager.buildWithDefaults(name);
-})
+}

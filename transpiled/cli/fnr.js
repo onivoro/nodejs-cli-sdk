@@ -1,7 +1,10 @@
 #! /usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const exec_if_1 = require("../src/commandline/exec-if");
+const arg_parser_1 = require("../src/commandline/arg-parser");
+const help_me_1 = require("../src/commandline/help-me");
 const find_and_replace_1 = require("../src/disk-io/find-and-replace");
-(0, exec_if_1.execIf)(find_and_replace_1.findAndReplace);
+const { find, replace, _, w, i } = (0, arg_parser_1.argParser)();
+(0, help_me_1.helpMe)(find_and_replace_1.findAndReplace, () => (0, find_and_replace_1.findAndReplace)(find, replace, _, w, i)
+    .catch(e => console.error(e)));
 //# sourceMappingURL=fnr.js.map

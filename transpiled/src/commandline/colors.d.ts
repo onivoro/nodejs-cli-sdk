@@ -1,0 +1,9 @@
+export declare const RESET = "\u001B[0m";
+export declare const RED = "\u001B[38;5;1m";
+export declare const GREEN = "\u001B[38;5;2m";
+export declare const YELLOW = "\u001B[38;5;3m";
+export declare const CYAN = "\u001B[38;5;6m";
+export declare const red: (text: string) => string;
+export declare const green: (text: string) => string;
+export declare const yellow: (text: string) => string;
+export declare const cyan: (text: string) => string;

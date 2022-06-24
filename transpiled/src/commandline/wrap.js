@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.exec = void 0;
+exports.wrap = void 0;
 const FunctionParser_1 = require("../utils/FunctionParser");
-const arg_parser_1 = require("./arg-parser");
-function exec(main, processArgs = process.argv.slice(2), consoleLog = console.log.bind(console)) {
-    const cliArgs = (0, arg_parser_1.argParser)(processArgs);
+// import { argParser } from "./arg-parser";
+const yargs = require("yargs-parser");
+function wrap(main, processArgs = process.argv.slice(2), consoleLog = console.log.bind(console)) {
+    const cliArgs = yargs(processArgs);
     const fnArgs = FunctionParser_1.FunctionParser.parseFunctionArguments(`${main}`);
-    if (cliArgs === null) {
+    if (cliArgs.help) {
         consoleLog(`Expected the following:\n${fnArgs.join(', \n')}`);
     }
     else {
@@ -14,5 +15,5 @@ function exec(main, processArgs = process.argv.slice(2), consoleLog = console.lo
         consoleLog(main.apply(main, fnVals));
     }
 }
-exports.exec = exec;
-//# sourceMappingURL=exec.js.map
+exports.wrap = wrap;
+//# sourceMappingURL=wrap.js.map

@@ -1,6 +1,12 @@
 #! /usr/bin/env node
 
-import { execIf } from '../src/commandline/exec-if';
+import { argParser } from '../src/commandline/arg-parser';
+import { helpMe } from '../src/commandline/help-me';
 import { findAndReplace } from '../src/disk-io/find-and-replace';
 
-execIf(findAndReplace);
+const { find, replace, _, w, i } = argParser();
+
+helpMe(findAndReplace, () =>
+    findAndReplace(find, replace, _, w, i)
+        .catch(e => console.error(e))
+)
