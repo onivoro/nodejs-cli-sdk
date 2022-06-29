@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.rando = exports.FunctionParser = exports.snake = exports.kebab = exports.camel = exports.streamFile = exports.save = exports.saveObjectToDisk = exports.resolveOutputDirectory = exports.mapCsvToObject = exports.logError = exports.regionParameter = exports.profileParameter = exports.Parameter = exports.getAwsProfiles = exports.argParser = exports.getDirs = exports.getDirsAtPath = exports.BinaryPackager = exports.BinaryCleaner = void 0;
+exports.rando = exports.FunctionParser = exports.snake = exports.kebab = exports.camel = exports.streamFile = exports.save = exports.saveObjectToDisk = exports.resolveOutputDirectory = exports.mapCsvToObject = exports.logError = exports.regionParameter = exports.profileParameter = exports.Parameter = exports.helpMe = exports.getAwsProfiles = exports.argParser = exports.getDirs = exports.getDirsAtPath = exports.BinaryPackager = exports.BinaryCleaner = void 0;
 var BinaryCleaner_1 = require("./packaging/BinaryCleaner");
 Object.defineProperty(exports, "BinaryCleaner", { enumerable: true, get: function () { return BinaryCleaner_1.BinaryCleaner; } });
 var BinaryPackager_1 = require("./packaging/BinaryPackager");
@@ -12,6 +12,8 @@ var arg_parser_1 = require("./commandline/arg-parser");
 Object.defineProperty(exports, "argParser", { enumerable: true, get: function () { return arg_parser_1.argParser; } });
 var get_aws_profiles_1 = require("./commandline/get-aws-profiles");
 Object.defineProperty(exports, "getAwsProfiles", { enumerable: true, get: function () { return get_aws_profiles_1.getAwsProfiles; } });
+var help_me_1 = require("./commandline/help-me");
+Object.defineProperty(exports, "helpMe", { enumerable: true, get: function () { return help_me_1.helpMe; } });
 var parameter_1 = require("./commandline/parameter");
 Object.defineProperty(exports, "Parameter", { enumerable: true, get: function () { return parameter_1.Parameter; } });
 var profile_parameter_1 = require("./commandline/profile.parameter");

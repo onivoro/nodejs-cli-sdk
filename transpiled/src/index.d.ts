@@ -3,6 +3,7 @@ export { BinaryPackager } from './packaging/BinaryPackager';
 export { getDirsAtPath, getDirs } from './disk-io/get-dirs';
 export { argParser } from './commandline/arg-parser';
 export { getAwsProfiles } from './commandline/get-aws-profiles';
+export { helpMe } from './commandline/help-me';
 export { Parameter } from './commandline/parameter';
 export { profileParameter } from './commandline/profile.parameter';
 export { regionParameter } from './commandline/region.parameter';
